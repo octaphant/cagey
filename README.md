@@ -28,17 +28,19 @@ setup build --buildtype=release`.
 
 You can run Cagey by running `./build/cagey APPLICATION`. It will launch in nested mode if you are already in a graphical session, and directly on the display if not. 
 In debug mode (default build type with Meson), press <kbd>Alt</kbd>+<kbd>Esc</kbd> to quit. 
+
 Please be aware that this functionality is not available in release builds. If you accidentally launch such a build on a virtual console without the `-s` option to enable virtual terminal switching, there is **no way** to exit it other than closing the application through its own interface, if possible.
 Should that be impossible, you will unfortunately forced to use the magic SysRq key or physical power button.
 
 For more configuration options, see
-[Configuration](https://github.com/octaphant/cagey/wiki/Configuration). Cagey-specific documentation is WIP.
+[Configuration](https://github.com/octaphant/cagey/wiki/Configuration) (WIP).
 
 ## Bugs
 
 For any bug, please [create an
 issue](https://github.com/octaphant/cagey/issues/new) on
 [GitHub](https://github.com/octaphant/cagey). 
+
 Please note that any issues submitted before the software is actually completed will be ignored, as it is not meant for use in its present state.
 
 ## License
@@ -49,4 +51,5 @@ Please see
 
 ## Credits
 Cage is copyright © 2018-2020 Jente Hidskes <dev@hjdskes.nl>. It is used in accordance with its license.
+
 The idea for IPC-based input emulation was inspired by the [Hyprland](https://github.com/hyprwm/Hyprland) project, which implements the possibility for it.
