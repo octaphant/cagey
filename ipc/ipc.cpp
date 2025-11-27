@@ -7,6 +7,9 @@
 #include <string>
 #include <sstream>
 #include <cstring>
+#include <sys/socket.h>
+#include <sys/un.h>
+
 /*
     Helper function to find the first open numbered filepath with a given prefix.
 */
@@ -26,13 +29,7 @@ std::string test_path(std::string prefix){
 
 
 extern "C"{
-    /*
-        Main function for the thread that operates the IPC socket.
-    */
-    void* ipc_thread_main(void* arg){
-
-    }
-
+    
     /*
         Computes the path to open the IPC socket at. The caller is responsible for freeing the returned string.
     */
@@ -54,4 +51,30 @@ extern "C"{
             return nullptr;
         }
     }
+
+    /*
+        Create and bind IPC socket.
+    */
+    int ipc_mksocket(){
+        int sock = socket(AF_UNIX, SOCK_SEQPACKET, 0);
+        sockaddr_un addr;
+        addr.sun_family = AF_UNIX;
+        char* path = ipc_socket_path();
+        strcpy(addr.sun_path, path);
+        free(path);
+        if(bind(sock, (sockaddr*)&addr, sizeof(sockaddr_un))){
+            return sock;
+        } else{
+            close(sock);
+            return -1;
+        }
+    }
+
+    /*
+        Main function for the thread that operates the IPC socket.
+    */
+    void* ipc_thread_main(void* arg){
+
+    }
+    
 }
