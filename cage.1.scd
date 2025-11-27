@@ -31,7 +31,7 @@ activities outside the scope of the running application are prevented.
 	*extend* Cage extends the display across all connected monitors.
 
 *-s*
-	Allow VT switching
+	Forbid VT switching
 
 *-v*
 	Show the version number and exit.

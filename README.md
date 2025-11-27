@@ -29,8 +29,8 @@ setup build --buildtype=release`.
 You can run Cagey by running `./build/cagey APPLICATION`. It will launch in nested mode if you are already in a graphical session, and directly on the display if not. 
 In debug mode (default build type with Meson), press <kbd>Alt</kbd>+<kbd>Esc</kbd> to quit. 
 
-Please be aware that this functionality is not available in release builds. If you accidentally launch such a build on a virtual console without the `-s` option to enable virtual terminal switching, there is **no way** to exit it other than closing the application through its own interface, if possible.
-Should that be impossible, you will unfortunately forced to use the magic SysRq key or physical power button.
+Since cage was originally designed as a kiosk, it was not possible to escape from it when running on a physical TTY by switching to a different one, unless TTY switching was enabled with the -s switch.
+Since Cagey's use case is a bit different, TTY switching is enabled by default. The -s switch instead disables it.
 
 For more configuration options, see
 [Configuration](https://github.com/octaphant/cagey/wiki/Configuration) (WIP).
