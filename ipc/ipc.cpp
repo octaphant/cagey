@@ -9,6 +9,7 @@
 #include <cstring>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <poll.h>
 
 /*
     Helper function to find the first open numbered filepath with a given prefix.
@@ -72,10 +73,18 @@ extern "C"{
     }
 
     /*
-        Main function for the thread that operates the IPC socket.
+        Main function for the thread that operates the IPC socket. 
+        It is passed the file descriptor for the bound socket, which it will subsequently listen on and manage.
+        Returns a pointer to an int error code. This is currently 0 on success and -1 on failure.
     */
     void* ipc_thread_main(void* arg){
-
+        int sock = *(int*)arg;
+        int* retcode = (int*)malloc(sizeof(int));
+        if(listen(sock, 2) != 0){
+            //listen failed
+            *retcode = -1;
+            return retcode;
+        }
     }
     
 }
