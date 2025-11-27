@@ -1,4 +1,4 @@
-# Cage: a Wayland kiosk, with input emulation
+# Cagey: a Wayland kiosk, with input emulation
 
 ## Important notice!
 This program is still in the early stages of development! It is **not functional**, let alone stable. Do not use it until more work has been done!
