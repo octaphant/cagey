@@ -29,7 +29,7 @@ extern "C"{
     /*
         Main function for the thread that operates the IPC socket.
     */
-    void ipc_thread_main(void* arg){
+    void* ipc_thread_main(void* arg){
 
     }
 
