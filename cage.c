@@ -231,7 +231,7 @@ usage(FILE *file, const char *cage)
 		" -h\t Display this help message\n"
 		" -m extend Extend the display across all connected outputs (default)\n"
 		" -m last Use only the last connected output\n"
-		" -s\t Allow VT switching\n"
+		" -s\t Disable VT switching\n"
 		" -v\t Show the version number and exit\n"
 		"\n"
 		" Use -- when you want to pass arguments to APPLICATION\n",
@@ -261,7 +261,7 @@ parse_args(struct cg_server *server, int argc, char *argv[])
 			}
 			break;
 		case 's':
-			server->allow_vt_switch = true;
+			server->allow_vt_switch = false;
 			break;
 		case 'v':
 			fprintf(stdout, "Cage version " CAGE_VERSION "\n");
@@ -286,7 +286,7 @@ main(int argc, char *argv[])
 #ifdef DEBUG
 	server.log_level = WLR_DEBUG;
 #endif
-
+	server.allow_vt_switch = true;
 	if (!parse_args(&server, argc, argv)) {
 		return 1;
 	}
