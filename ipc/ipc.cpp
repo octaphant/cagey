@@ -60,6 +60,7 @@ extern "C"{
         sockaddr_un addr;
         addr.sun_family = AF_UNIX;
         char* path = ipc_socket_path();
+        if(path == nullptr){return -1;}
         strcpy(addr.sun_path, path);
         free(path);
         if(bind(sock, (sockaddr*)&addr, sizeof(sockaddr_un))){
